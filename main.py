@@ -54,15 +54,15 @@ class Parser(object):
         for k in self.brand_models:
             self.sql_brands = (
                 f"{self.sql_brands} "
-                f"({dict(self.brand_models[k]).get('brand_id')}, '{k}'), \n"
+                f"('{dict(self.brand_models[k]).get('brand_id')}', '{k}'), \n"
             )
 
         for k in self.brand_models:
             for m in list(dict(self.brand_models[k]).get('models')):
                 self.sql_models = (
                     f"{self.sql_models} "
-                    f"({str(uuid.uuid4())}, "
-                    f"{dict(self.brand_models[k]).get('brand_id')}, '{m}'), \n"
+                    f"('{str(uuid.uuid4())}', "
+                    f"'{dict(self.brand_models[k]).get('brand_id')}', '{m}'), \n"
                 )
 
         return self
